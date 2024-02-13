@@ -1,8 +1,5 @@
 const fs = require('fs');
-
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`, 'utf8')
-);
+const Tour = require('../models/tourModel');
 
 exports.checkID = (req, res, next, val) => {
   if (req.params.id * 1 > tours.length) {
@@ -61,7 +58,7 @@ exports.createTour = (req, res) => {
           tour: newTour,
         },
       });
-    }
+    },
   );
 };
 
