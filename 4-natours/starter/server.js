@@ -1,32 +1,16 @@
 const mongoose = require('mongoose');
+
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
+  process.env.DATABASE_PASSWORD,
 );
 
-mongoose.connect(DB, {}).then((con) => {
+mongoose.connect(DB, {}).then(() => {
   console.log('DB connection successful.');
 });
-
-
-
-const testTour = new Tour({
-  name: 'The Park Camper',
-  rating: 4.7,
-  price: 497,
-});
-
-testTour
-  .save()
-  .then((doc) => {
-    console.log(doc);
-  })
-  .catch((err) => {
-    console.log('ERROR ', err);
-  });
 
 const app = require('./app');
 
